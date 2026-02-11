@@ -4,71 +4,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lee Chee Fong Ryan - portfolio. Projects, experience, and contact.">
     <title>Ryan Lee | Portfolio</title>
-
-    <link rel="icon" href="assets/icons/favicon.ico" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/utilities.css">
-
-    <script type="module" src="js/main.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
-    <a href="#main" class="skip-link">Skip to content</a>
+    <nav-bar></nav-bar>
 
+    <header id="home" class="hero">
+        <div class="hero-container">
 
-    <header class="site-header">
-        <nav class="nav container" aria-label="Primary">
-            <a href="/" class="nav__brand">Ryan Lee</a>
-
-            <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
-
-            <div class="nav__menu" id="nav-menu">
-                <a href="#projects">Projects</a>
-                <a href="pages/about.html">About</a>
-                <a href="#contact">Contact</a>
+            <div class="hero-image">
+                <!-- Optional: profile image or illustration -->
+                <div class="glass-card">
+                    <img src="images/profile.png" alt="Ryan portrait" />
+                </div>
             </div>
-        </nav>
+
+            <div class="hero-content">
+                <h1>
+                    Hi, I'm <span class="highlight">Ryan</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Information Systems student building scalable, thoughtful digital experiences.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="btn">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+
+
+
+        </div>
     </header>
 
-    <main id="main">
-        <section class="hero container">
-            <h1>Hi, I'm <span class="accent">Ryan Lee</span>.</h1>
-            <p class="hero__subtitle">I build clean, realiable web apps and love shipping projects.</p>
 
-            <div class="hero_cta">
-                <a href="#projects" class="btn">View Projects</a>
-                <a href="#contact" class="btn btn--ghost">Contact</a>
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+
+            <div class="card-grid">
+
+                <article class="card project-card">
+                    <h3>Wanderlust</h3>
+                    <p>
+                        A travel itinerary planner built with Vue and Node.js.
+                    </p>
+                    <div class="card-links">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <h3>HeritageGo</h3>
+                    <p>
+                        Youth-focused heritage discovery platform with AB testing.
+                    </p>
+                    <div class="card-links">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <h3>Metamorphosis</h3>
+                    <p>
+                        Orientation management system built with Next.js and Prisma.
+                    </p>
+                    <div class="card-links">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </article>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="section container">
-            <div class="section__header">
-                <h2>Projects</h2>
-                <p>Some things I've build recently.</p>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+
+            <div class="card-grid">
+
+                <article class="card skill-card">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>Next.js</li>
+                    </ul>
+                </article>
+
+                <article class="card skill-card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Express</li>
+                        <li>PostgreSQL</li>
+                        <li>Supabase</li>
+                        <li>Docker</li>
+                    </ul>
+                </article>
+
+                <article class="card skill-card">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>Figma</li>
+                        <li>Azure</li>
+                        <li>OutSystems</li>
+                    </ul>
+                </article>
+
             </div>
+        </div>
+    </section>
 
-            <div id="projects-grid" class="grid"></div>
-        </section>
 
+    <section id="contact">
 
-        <section class="section cointainer" id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:ryanleecf@hotmail.com">ryanleecf@hotmail.com</a></p>
-            <p>
-                <a href="https://github.com/leecfryan" target="_blank" rel="noreferrer">GitHub</a>
-                .
-                <a href="https://www.linkedin.com/in/leecfr" target="_blank" rel="norefferer">LinkedIn</a>
-            </p>
-        </section>
-    </main>
+    </section>
 
-    <footer class="site-footer container"><small>
-            ©️ <span id="year">2026</span> Ryan Lee
-        </small></footer>
+    <footer id="footer">
+
+    </footer>
+    <script src="navbar.js"></script>
 </body>
 
 </html>
