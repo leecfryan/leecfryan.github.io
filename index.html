@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ryan Lee | Portfolio</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
+    <div class="bg-layer" aria-hidden="true"></div>
+    <div class="bg-orbs" aria-hidden="true"></div>
+
+
     <nav-bar></nav-bar>
 
     <header id="home" class="hero">
@@ -37,98 +41,40 @@
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
-
-
-
         </div>
     </header>
 
-
     <section id="projects">
-        <div class="container">
+        <div class="projects-container">
             <h2>Projects</h2>
 
-            <div class="card-grid">
-
-                <article class="card project-card">
-                    <h3>Wanderlust</h3>
-                    <p>
-                        A travel itinerary planner built with Vue and Node.js.
-                    </p>
-                    <div class="card-links">
-                        <a href="#">Live Demo</a>
-                        <a href="#">GitHub</a>
-                    </div>
-                </article>
-
-                <article class="card project-card">
-                    <h3>HeritageGo</h3>
-                    <p>
-                        Youth-focused heritage discovery platform with AB testing.
-                    </p>
-                    <div class="card-links">
-                        <a href="#">Live Demo</a>
-                        <a href="#">GitHub</a>
-                    </div>
-                </article>
-
-                <article class="card project-card">
-                    <h3>Metamorphosis</h3>
-                    <p>
-                        Orientation management system built with Next.js and Prisma.
-                    </p>
-                    <div class="card-links">
-                        <a href="#">Live Demo</a>
-                        <a href="#">GitHub</a>
-                    </div>
-                </article>
+            <div class="projects-grid">
 
             </div>
         </div>
     </section>
-
 
     <section id="skills">
-        <div class="container">
-            <h2>Skills</h2>
-
-            <div class="card-grid">
-
-                <article class="card skill-card">
-                    <h3>Frontend</h3>
-                    <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>React</li>
-                        <li>Next.js</li>
-                    </ul>
-                </article>
-
-                <article class="card skill-card">
-                    <h3>Backend</h3>
-                    <ul>
-                        <li>Node.js</li>
-                        <li>Express</li>
-                        <li>PostgreSQL</li>
-                        <li>Supabase</li>
-                        <li>Docker</li>
-                    </ul>
-                </article>
-
-                <article class="card skill-card">
-                    <h3>Tools</h3>
-                    <ul>
-                        <li>Git</li>
-                        <li>Figma</li>
-                        <li>Azure</li>
-                        <li>OutSystems</li>
-                    </ul>
-                </article>
-
+        <div class="skills-container">
+            <h2 class="section-title">SKILLS</h2>
+            <div class="radar-card">
+                <div class="radar-top">
+                    <div class="radar-visual">
+                        <svg class="radar-svg" viewBox="-140 -140 280 280"></svg>
+                    </div>
+                    <div class="radar-legend"></div>
+                </div>
+                <div class="radar-bottom">
+                    <div class="skills-grid"></div>
+                    <div class="learning-section">
+                        <h3>Currently Learning</h3>
+                        <div class="learning-tags"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
 
 
     <section id="contact">
@@ -139,6 +85,12 @@
 
     </footer>
     <script src="navbar.js"></script>
+    <script src="projects.js"></script>
+    <script src="skills.js"></script>
+    <script src="radar.js"></script>
+    <script src="orbs.js"></script>
+
+
 </body>
 
 </html>

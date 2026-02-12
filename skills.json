@@ -1,0 +1,59 @@
+{
+  "radar": {
+    "labels": ["Frontend", "Backend", "DevOps", "UI/UX", "Databases", "Cloud"],
+    "values": [85, 78, 70, 72, 75, 68]
+  },
+  "categories": [
+    {
+      "category": "Frontend",
+      "skills": [
+        { "name": "HTML", "level": 90 },
+        { "name": "CSS", "level": 85 },
+        { "name": "JavaScript", "level": 88 },
+        { "name": "React", "level": 80 },
+        { "name": "Next.js", "level": 75 }
+      ]
+    },
+    {
+      "category": "Backend",
+      "skills": [
+        { "name": "Node.js", "level": 85 },
+        { "name": "Express", "level": 80 },
+        { "name": "REST APIs", "level": 78 },
+        { "name": "Authentication / Authorization (JWT/Sessions)", "level": 72 }
+      ]
+    },
+    {
+      "category": "Databases",
+      "skills": [
+        { "name": "PostgreSQL", "level": 75 },
+        { "name": "ER Modellng", "level": 72 },
+        { "name": "Prisma ORM", "level": 70 },
+        { "name": "MySQL", "level": 70 },
+        { "name": "Indexing & Query Optimisation", "level": 75 }
+      ]
+    },
+    {
+      "category": "DevOps",
+      "skills": [
+        { "name": "Docker", "level": 75 },
+        { "name": "Outsystems", "level": 62 }
+      ]
+    },
+    {
+      "category": "Cloud",
+      "skills": [
+        { "name": "Azure VM Deployment", "level": 68 },
+        { "name": "Supabase", "level": 70 }
+      ]
+    },
+    {
+      "category": "UI/UX",
+      "skills": [
+        { "name": "Figma", "level": 75 },
+        { "name": "Canva", "level": 80 }
+      ]
+    }
+  ],
+  "learning": ["Go", "Kubernetes", "Three.js", "RabbitMQ"]
+}

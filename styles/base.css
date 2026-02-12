@@ -53,6 +53,15 @@ h6 {
     overflow-wrap: break-word;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
 /* 7. Remove default list padding */
 ul,
 ol {
@@ -66,3 +75,42 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+
+/* =============================
+   NAVBAR
+============================= */
+
+nav {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgb(252, 197, 129);
+}
+
+.navbar a {
+    font-size: 18px;
+    color: beige;
+    margin: 0.5rem 1rem;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border-bottom: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar a:hover {
+    transform: scale(1.1);
+    border-bottom-color: rgb(252, 197, 129);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+

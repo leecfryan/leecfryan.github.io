@@ -1,0 +1,24 @@
+[
+  {
+    "title": "HeartCode",
+    "description": "Volunteered with CDAC to teach secondary school students to code a webpage on substance abuse using Next.js",
+    "image": "images/heartcode.png",
+    "github": "https://github.com/yourrepo",
+    "live":"#"
+  },
+  {
+    "title": "HeritageGo",
+    "description": "Youth-focused heritage discovery platform with AB testing. UI Design made with Figma",
+    "image": "images/heritagego.png",
+    "github": "https://github.com/yourrepo",
+    "live":"#"
+
+  },
+  {
+    "title": "Metamorphosis",
+    "description": "Orientation management system built with Next.js and Prisma. (Still in development)",
+    "image": "images/metamorphosis.png",
+    "github": "https://github.com/yourrepo",
+    "live":"#"
+  }
+]

@@ -2,27 +2,25 @@
    BACKGROUND (FUTURISTIC BASE)
 ============================= */
 
+/* Body becomes a plain canvas */
 body {
-    background:
-        radial-gradient(circle at 20% 20%, rgba(0, 140, 255, 0.25), transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(255, 0, 180, 0.25), transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(0, 255, 200, 0.08), transparent 60%),
-        #0f172a;
-
     min-height: 100vh;
+    margin: 0;
     overflow-x: hidden;
+    background: #0f172a;
+    /* fallback only */
 }
 
-body::before {
+/* Your pulsing glow overlay becomes a pseudo-layer on bg-layer */
+.bg-layer::before {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
     background:
         radial-gradient(circle at 30% 40%, rgba(0, 140, 255, 0.2), transparent 50%),
         radial-gradient(circle at 70% 60%, rgba(255, 0, 180, 0.2), transparent 50%);
     animation: pulseGlow 8s ease-in-out infinite alternate;
-    pointer-events: none;
-    z-index: 0;
+    opacity: 0.9;
 }
 
 @keyframes pulseGlow {
@@ -35,71 +33,83 @@ body::before {
     }
 }
 
+/* Orbs ABOVE the gradient layer */
+.bg-orbs {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    /* ✅ ABOVE bg-layer */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Keep your content ABOVE orbs */
+nav,
+.hero,
+#projects,
+#skills {
+    position: relative;
+    z-index: 2;
+}
+
 /* =============================
-   NAVBAR
+   FLOATING BACKGROUND ORBS
 ============================= */
 
-nav {
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+.bg-orb {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 999px;
+    opacity: 0.5;
+    background: rgba(252, 197, 129, 1);
+    filter: blur(14px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+    mix-blend-mode: normal;
 }
 
-.navbar {
-    display: flex;
-    justify-content: center;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgb(252, 197, 129);
+@keyframes pulseGlow {
+    0% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
-.navbar a {
-    font-size: 18px;
-    color: beige;
-    margin: 0.5rem 1rem;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border-bottom: 2px solid transparent;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.navbar a:hover {
-    transform: scale(1.1);
-    border-bottom-color: rgb(252, 197, 129);
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.2);
-}
 
 /* =============================
-   HERO (NOW THE GLASS CARD)
+   HERO (GLASS CARD)
 ============================= */
 
 .hero {
-    min-height: 60vh;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: min(1100px, 100%);
     margin: 3rem auto;
     padding: 2.5rem;
-    position: relative;
+
     border-radius: 20px;
 
-    /* GLASS STYLE MOVED HERE */
     background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.18),
             rgba(255, 255, 255, 0.05));
     backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
     border: 1px solid rgba(255, 255, 255, 0.15);
 
     box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.45),
         inset 0 1px rgba(255, 255, 255, 0.3);
 
-    z-index: 1;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
-/* Subtle noise overlay */
 .hero::after {
     content: "";
     position: absolute;
@@ -109,51 +119,44 @@ nav {
     pointer-events: none;
 }
 
-/* =============================
-   HERO LAYOUT
-============================= */
-
 .hero-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
+    width: 100%;
     align-items: center;
+    justify-content: center;
     height: 100%;
+    position: relative;
+    z-index: 1;
 }
-
-/* =============================
-   HERO CONTENT (NO GLASS NOW)
-============================= */
 
 .hero-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 .hero-content h1 {
     margin: 0;
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(3rem, 5vw, 5rem);
     letter-spacing: -0.02em;
     color: rgb(252, 197, 129);
 }
 
 .hero-content p {
     margin: 0;
-    max-width: 45ch;
+    max-width: 55ch;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     opacity: 0.85;
     color: beige;
 }
 
-/* =============================
-   HERO BUTTONS
-============================= */
-
 .hero-actions {
     display: flex;
     gap: 0.8rem;
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
 }
 
 .hero-actions a {
@@ -166,41 +169,38 @@ nav {
     text-decoration: none;
     color: beige;
     background: rgba(255, 255, 255, 0.12);
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hero-actions a:hover {
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
-
-/* =============================
-   HERO IMAGE (CLEAN, NO GLASS)
-============================= */
 
 .hero-image {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
 }
 
 .hero-image img {
     width: 100%;
     height: 100%;
-    max-height: 450px;
+    max-height: 550px;
     object-fit: cover;
     object-position: center;
     border-radius: 16px;
 
     border: 1px solid rgba(252, 197, 129, 0.35);
-
     box-shadow:
         0 8px 30px rgba(0, 0, 0, 0.4),
         0 0 25px rgba(252, 197, 129, 0.35),
         0 0 60px rgba(252, 197, 129, 0.15);
 
-    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
 }
 
 .hero-image img:hover {
@@ -209,6 +209,328 @@ nav {
         0 12px 40px rgba(0, 0, 0, 0.45),
         0 0 35px rgba(252, 197, 129, 0.5),
         0 0 80px rgba(252, 197, 129, 0.25);
+}
+
+
+/* =============================
+   PROJECTS SECTION
+============================= */
+
+#projects {
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(12px);
+}
+
+.projects-container {
+    width: min(1100px, 100%);
+    padding: 2rem 2rem;
+}
+
+.projects-container h2 {
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    color: rgb(252, 197, 129);
+    text-align: center;
+    font-size: xx-large;
+    letter-spacing: 0.15em;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-thumbnail {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-thumbnail img {
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h3 {
+    margin-top: 1rem;
+    color: rgb(252, 197, 129);
+    letter-spacing: 0.12em;
+}
+
+.project-card p {
+    color: beige;
+    opacity: 0.9;
+}
+
+.project-links {
+    padding: 0.3rem 0.3rem;
+    text-align: right;
+}
+
+.project-links a {
+    display: inline-block;
+    margin-left: 0.6rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    color: beige;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.06);
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.project-links a:hover {
+    background: rgba(252, 197, 129, 0.15);
+    border-color: rgba(252, 197, 129, 0.45);
+    transform: translateY(-4px);
+}
+
+
+/* =============================
+   SKILLS SECTION (RADAR + CARDS)
+   Top/Bottom layout (compact)
+============================= */
+
+#skills {
+    padding: 5rem 2rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.skills-container {
+    width: min(1100px, 100%);
+}
+
+.section-title {
+    margin: 0 0 2.5rem 0;
+    text-transform: uppercase;
+    color: rgb(252, 197, 129);
+    text-align: center;
+    font-size: xx-large;
+    letter-spacing: 0.15em;
+}
+
+/* Big glass card holding everything */
+.radar-card {
+    width: 100%;
+    border-radius: 18px;
+    padding: 2rem;
+
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.35),
+        inset 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* TOP: radar + legend */
+.radar-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Radar panel (centered, consistent) */
+.radar-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+
+}
+
+/* The SVG itself */
+.radar-svg {
+    width: min(460px, 100%);
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+/* Legend panel */
+.radar-legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* compact two-column legend */
+    gap: 0.7rem 1.2rem;
+    align-content: start;
+    padding: 0.5rem 0;
+}
+
+.radar-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: beige;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.radar-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(252, 197, 129, 0.95);
+    box-shadow: 0 0 18px rgba(252, 197, 129, 0.25);
+}
+
+/* BOTTOM: cards + currently learning */
+.radar-bottom {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+/* Cards grid goes wider => section less tall */
+.radar-bottom .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Each category card */
+.skill-card {
+    padding: 1.6rem;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.28),
+        inset 0 1px rgba(255, 255, 255, 0.18);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 18px 55px rgba(0, 0, 0, 0.42),
+        0 0 30px rgba(252, 197, 129, 0.12),
+        inset 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.skill-card h3 {
+    margin: 0 0 1.2rem 0;
+    color: rgb(252, 197, 129);
+    letter-spacing: 0.08em;
+    font-size: 1.05rem;
+}
+
+/* Skills list inside a card */
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+/* Label + % */
+.skill-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.skill-label {
+    color: beige;
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+.skill-value {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.85rem;
+}
+
+/* Bars */
+.skill-bar {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.10);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.skill-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg,
+            rgba(252, 197, 129, 0.85),
+            rgba(252, 197, 129, 0.35));
+    box-shadow: 0 0 18px rgba(252, 197, 129, 0.22);
+}
+
+/* Currently Learning */
+.learning-section {
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.learning-section h3 {
+    margin: 0 0 1rem 0;
+    color: rgb(252, 197, 129);
+    letter-spacing: 0.08em;
+}
+
+.learning-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: flex-start;
+}
+
+.learning-tag {
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    color: beige;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(252, 197, 129, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
 }
 
 /* =============================
@@ -226,5 +548,47 @@ nav {
 
     .hero-image img {
         height: 320px;
+    }
+
+    .radar-card {
+        grid-template-columns: 1fr;
+    }
+
+    .radar-info .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-tags {
+        justify-content: center;
+    }
+
+    .radar-top {
+        grid-template-columns: 1fr;
+    }
+
+    .radar-legend {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .radar-bottom .skills-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .radar-legend {
+        grid-template-columns: 1fr;
+    }
+
+    .radar-bottom .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-tags {
+        justify-content: center;
     }
 }
