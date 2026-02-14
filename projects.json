@@ -3,22 +3,38 @@
     "title": "HeartCode",
     "description": "Volunteered with CDAC to teach secondary school students to code a webpage on substance abuse using Next.js",
     "image": "images/heartcode.png",
-    "github": "https://github.com/yourrepo",
-    "live":"#"
+    "github": "https://github.com/leecfryan/heartcode_2024",
+    "live":"https://heartcode-2024.vercel.app/"
   },
   {
     "title": "HeritageGo",
-    "description": "Youth-focused heritage discovery platform with AB testing. UI Design made with Figma",
+    "description": "Youth-focused heritage discovery platform with AB testing. UI Design made with Figma. Please contact me for wireframe.",
     "image": "images/heritagego.png",
-    "github": "https://github.com/yourrepo",
-    "live":"#"
+    "github": "",
+    "live":""
 
   },
   {
     "title": "Metamorphosis",
     "description": "Orientation management system built with Next.js and Prisma. (Still in development)",
     "image": "images/metamorphosis.png",
-    "github": "https://github.com/yourrepo",
-    "live":"#"
+    "github": "https://github.com/leecfryan/meta_2k26",
+    "live":""
+  },
+
+  {
+    "title": "Ping-Pong Scorekeeper",
+    "description": "Started off my JavaScript journey.",
+    "image": "images/scorekeeper.png",
+    "github": "https://github.com/leecfryan/scorekeeper",
+    "live":"https://leecfryan.github.io/scorekeeper/"
+  },
+
+  {
+    "title": "The Pig Game",
+    "description": "Battle it out in a game of luck with the pig game",
+    "image": "images/piggame.png",
+    "github": "https://github.com/leecfryan/The-Pig-Game",
+    "live":"https://leecfryan.github.io/The-Pig-Game/"
   }
 ]
